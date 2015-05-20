@@ -1,3 +1,4 @@
+# This Python file uses the following encoding: utf-8
 """A setuptools based setup module.
 
 See:
