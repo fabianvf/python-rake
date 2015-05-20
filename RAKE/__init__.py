@@ -1,2 +1,1 @@
-import RAKE
-Rake = RAKE.Rake
+from RAKE import Rake
