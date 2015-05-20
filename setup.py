@@ -58,6 +58,7 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='text mining data mining natural language processing'
+    keywords='text mining data mining natural language processing',
+    packages=find_packages()
 )
 
