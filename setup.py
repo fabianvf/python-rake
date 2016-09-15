@@ -15,16 +15,16 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.0.6',
+    version='1.0.7',
 
     description='A python module implementing the Rapid Automatic Keyword Extraction algorithm.',
 
     # The project's main homepage.
-    url='https://github.com/tomaspinho/python-rake',
+    url='https://github.com/fabianvf/python-rake',
 
     # Author details
-    author='Tomás Pinho',
-    author_email='me@tomaspinho.com',
+    author='Tomás Pinho <me@tomaspinho.com>, Fabian von Feilitzsch <fabian@fabianism.us>',
+    author_email='fabian@fabianism.us',
 
     # Choose your license
     license='MIT',
@@ -62,4 +62,3 @@ setup(
     keywords='text mining data mining natural language processing',
     packages=find_packages()
 )
-

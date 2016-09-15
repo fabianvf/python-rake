@@ -1,0 +1,23 @@
+language: python
+python:
+  - '2.7'
+  - '3.4'
+  - '3.5'
+
+install:
+  - pip install flake8
+
+before_script: flake8 .
+
+script:
+  flake8 .
+
+deploy:
+  provider: pypi
+  user: fabianvf
+  password:
+    secure: BCZHAzhDczjcyvLuCu5PnooHIgiIl72VChERUVfkNCvyD3MePIx/+ZVvaoOAyy4NkidDc472+OnqPKlxcU/xiEfUXCfs9eFo1XqWM09XfFH10fMB1zbJ2VtHPa3plpZLIQBBH1fwaEBlvhEMnVPfbCPce+g4VqZlJbijDYk4avElK2jqORPtN8qgDviVSniq6RRb9eqf6NXDbwdtvxuDvj7pl5+uPw14Dmnig19vzDGPQxDPXhPjeDi+cnQ19EautJqXfC4tuyEMEKZ6k6AWlSKAou+btAQyh84I68ah73to7RcFiMIWbEk1fyxHMI+hBrpsK9xP3GWLgxqXXr7c7TYkp7YlaHQqYrTM0xbD4M34C8B7xgTe45siHTSbgDFncO5l25CVTjjr59tBtax8PhzOcsn58S6ETekQKtz2prAiXg1QMrFFmjrE7pvYzdcXGenNxP4Ka+4Q3ifZtmmMWNfsZpFuxu6m6C4kI0FiPRhG5ti3+5GnkLxljtb1g95zXYmx1q6x4sHml8dTZLBdCufjjJK/khHF4NHw9uRsLgT3Nbr+Qh+21hGBL0V8U51Z+eKHyT6ecvwpxBxWDUMjuIsW3+RjWfseoemoSHyyNs3V3dzeOZ0+ftyLUa5yOl7CsmmkVCa4+igdJP8Mjt1siQyGSvt2+SENJtJ8iNIY4Oc=
+  on:
+    tags: true
+    repo: fabianvf/python-rake
+    branch: master
