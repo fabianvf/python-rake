@@ -25,10 +25,20 @@ for lists:
     Rake.run(text);
 
 `RAKE.SmartStopList()` and `RAKE.FoxStopList()` return the expected lists as lists, they can be used as shown bellow:
-
-    import RAKE
-    Rake = RAKE.Rake(RAKE.SmartStopList());
     
+#### Additional Parameters ####
+
+```python
+    import RAKE
+    Rake = RAKE.Rake(
+        stopwords,
+        min_char_length=1, # minimum number of characters each word should have
+        max_words_length=5, # maximum number of words each phrase should have
+        min_keyword_frequency=1 # minimum number of times each keyword should appear
+    )
+```
+
+
 ### Releases ###
 I will push releases to pypi periodically, but if there is a feature in master not built/pushed and you want it to be, just ping me.
  
