@@ -11,11 +11,14 @@ The source code is released under the MIT License.
     pip install python-rake
 
 ### Usage ###
+#for external .txt files
     import RAKE
-    Rake = RAKE.Rake([path_to_your_stopwords_file]);
-    # You can use one of the stoplists included in the repository under stoplists/
+    Rake = RAKE.Rake(<path_to_your_stopwords_file>);
     Rake.run(text);
-
+#for built in stoplists
+    import RAKE
+    Rake = RAKE.Rake(<keyword>); #current keywords are SmartStopList and FoxStopList
+    Rake.run(text);
 
 ### Credit ###
 This is a maintained fork of the original python RAKE project, which can be found here: https://github.com/aneesha/RAKE
