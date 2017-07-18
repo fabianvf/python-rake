@@ -56,6 +56,15 @@ def split_sentences(text):
     return sentences
 
 
+def build_stop_word_regex_static(stop_word_list): #static handles built in files only
+    stop_word_regex_list = []
+    for word in stop_word_list:
+        word_regex = r'\b' + word + r'(?![\w-])'
+        stop_word_regex_list.append(word_regex)
+    stop_word_pattern = re.compile('|'.join(stop_word_regex_list), re.IGNORECASE)
+    return stop_word_pattern
+
+
 def build_stop_word_regex(stop_word_file_path):
     stop_word_list = load_stop_words(stop_word_file_path)
     stop_word_regex_list = []
@@ -114,9 +123,16 @@ def generate_candidate_keyword_scores(phrase_list, word_score):
 
 
 class Rake(object):
-    def __init__(self, stop_words_path):
-        self.stop_words_path = stop_words_path
-        self.__stop_words_pattern = build_stop_word_regex(stop_words_path)
+    def __init__(self, stop_words_path): #lets users call predefined stopwords easily in a platform agnostic manner
+        if stop_words_path == 'FoxStopList':
+            import FoxStopList
+            self.__stop_words_pattern = build_stop_word_regex_static(FoxStopList.words())
+        elif stop_words_path == 'SmartStopList':
+            import SmartStopList
+            self.__stop_words_pattern = build_stop_word_regex_static(SmartStopList.words())
+        else:
+            self.__stop_words_pattern = build_stop_word_regex(stop_words_path)
+        
 
     def run(self, text):
         sentence_list = split_sentences(text)
