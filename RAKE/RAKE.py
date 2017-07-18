@@ -145,3 +145,4 @@ class Rake(object):
 
         sorted_keywords = sorted(keyword_candidates.items(), key=operator.itemgetter(1), reverse=True)
         return sorted_keywords
+    
