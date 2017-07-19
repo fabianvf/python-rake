@@ -11,11 +11,23 @@ The source code is released under the MIT License.
     pip install python-rake
 
 ### Usage ###
+for external .txt files
+take path as string datatype. words can be on same or different lines but must be seperated by spaces.
+
     import RAKE
-    Rake = RAKE.Rake([path_to_your_stopwords_file]);
-    # You can use one of the stoplists included in the repository under stoplists/
+    Rake = RAKE.Rake(<path_to_your_stopwords_file>); 
     Rake.run(text);
 
+for lists:
+
+    import RAKE
+    Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
+    Rake.run(text);
+
+`RAKE.SmartStopList()` and `RAKE.FoxStopList()` return the expected lists as lists, they can be used as shown bellow:
+
+    import RAKE
+    Rake = RAKE.Rake(RAKE.SmartStopList());
 
 ### Credit ###
 This is a maintained fork of the original python RAKE project, which can be found here: https://github.com/aneesha/RAKE

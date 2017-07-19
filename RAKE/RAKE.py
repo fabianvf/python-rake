@@ -15,6 +15,16 @@ def is_number(s):
     except ValueError:
         return False
 
+    
+def SmartStopList():
+    import SmartStopList
+    return SmartStopList.words()
+
+
+def FoxStopList():
+    import FoxStopList
+    return FoxStopList.words()
+
 
 def load_stop_words(stop_word_file):
     """
@@ -24,9 +34,8 @@ def load_stop_words(stop_word_file):
     """
     stop_words = []
     for line in open(stop_word_file):
-        if line.strip()[0:1] != "#":
-            for word in line.split():  # in case more than one per line
-                stop_words.append(word)
+        for word in line.split():  # in case more than one per line
+            stop_words.append(word)
     return stop_words
 
 
@@ -56,8 +65,7 @@ def split_sentences(text):
     return sentences
 
 
-def build_stop_word_regex(stop_word_file_path):
-    stop_word_list = load_stop_words(stop_word_file_path)
+def build_stop_word_regex(stop_word_list):
     stop_word_regex_list = []
     for word in stop_word_list:
         word_regex = r'\b' + word + r'(?![\w-])'
@@ -114,9 +122,12 @@ def generate_candidate_keyword_scores(phrase_list, word_score):
 
 
 class Rake(object):
-    def __init__(self, stop_words_path):
-        self.stop_words_path = stop_words_path
-        self.__stop_words_pattern = build_stop_word_regex(stop_words_path)
+    def __init__(self, stop_words): 
+        if isinstance(stop_words,list) #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
+            self.__stop_words_pattern = build_stop_word_regex(stop_words)
+        else:
+            self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words)) #handles normal file paths
+        
 
     def run(self, text):
         sentence_list = split_sentences(text)
@@ -129,3 +140,4 @@ class Rake(object):
 
         sorted_keywords = sorted(keyword_candidates.items(), key=operator.itemgetter(1), reverse=True)
         return sorted_keywords
+    
