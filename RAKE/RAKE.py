@@ -18,7 +18,7 @@ def is_number(s):
     except ValueError:
         return False
 
-    
+
 def SmartStopList():
     import SmartStopList
     return SmartStopList.words()
@@ -160,16 +160,18 @@ def generate_candidate_keyword_scores(phrase_list, word_score, min_keyword_frequ
 
 
 class Rake(object):
-  
+        
     def __init__(self, stop_words, min_char_length=1, max_words_length=5, min_keyword_frequency=1):
+
+        #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
+        if isinstance(stop_words, list):
+            self.__stop_words_pattern = build_stop_word_regex(stop_words)
+        else:
+            self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words))  # handles normal file paths
         self.__min_char_length = min_char_length
         self.__max_words_length = max_words_length
         self.__min_keyword_frequency = min_keyword_frequency
-        if isinstance(stop_words,list) #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
-            self.__stop_words_pattern = build_stop_word_regex(stop_words)
-        else:
-            self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words)) #handles normal file paths
-        
+
     def run(self, text):
         sentence_list = split_sentences(text)
 
@@ -182,4 +184,3 @@ class Rake(object):
 
         sorted_keywords = sorted(six.iteritems(keyword_candidates), key=operator.itemgetter(1), reverse=True)
         return sorted_keywords
-    
