@@ -28,6 +28,9 @@ for lists:
 
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList());
-
+    
+### Releases ###
+I will push releases to pypi periodically, but if there is a feature in master not built/pushed and you want it to be, just ping me.
+ 
 ### Credit ###
 This is a maintained fork of the original python RAKE project, which can be found here: https://github.com/aneesha/RAKE
