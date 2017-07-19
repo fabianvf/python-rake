@@ -12,9 +12,10 @@ The source code is released under the MIT License.
 
 ### Usage ###
 for external .txt files
+take path as string datatype. words can be on same or different lines but must be seperated by spaces.
 
     import RAKE
-    Rake = RAKE.Rake(<path_to_your_stopwords_file>); #take path as string datatype
+    Rake = RAKE.Rake(<path_to_your_stopwords_file>); 
     Rake.run(text);
 
 for lists:
