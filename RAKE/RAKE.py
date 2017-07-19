@@ -34,9 +34,8 @@ def load_stop_words(stop_word_file):
     """
     stop_words = []
     for line in open(stop_word_file):
-        if line.strip()[0:1] != "#":
-            for word in line.split():  # in case more than one per line
-                stop_words.append(word)
+        for word in line.split():  # in case more than one per line
+            stop_words.append(word)
     return stop_words
 
 
