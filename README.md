@@ -26,7 +26,7 @@ for lists:
 `RAKE.SmartStopList()` and `RAKE.FoxStopList()` return the expected lists as lists, they can be used as shown bellow:
 
     import RAKE
-    Rake = RAKE.Rake(RAKE.SmartStopList()); #takes list input
+    Rake = RAKE.Rake(RAKE.SmartStopList());
 
 ### Credit ###
 This is a maintained fork of the original python RAKE project, which can be found here: https://github.com/aneesha/RAKE
