@@ -20,7 +20,6 @@ The source code is released under the MIT License.
     Rake = RAKE.Rake(<list>); #takes list input
     Rake.run(text);
 #RAKE.SmartStopList() and RAKE.FoxStopList() return the expected lists as lists, they can be used as shown bellow
-#for lists
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList()); #takes list input
     Rake.run(text);
