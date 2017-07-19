@@ -13,7 +13,7 @@ The source code is released under the MIT License.
 ### Usage ###
 #for external .txt files
     import RAKE
-    Rake = RAKE.Rake(<path_to_your_stopwords_file>); #takes string datatype
+    Rake = RAKE.Rake(<path_to_your_stopwords_file>); #take path as string datatype
     Rake.run(text);
 #for lists
     import RAKE
