@@ -13,11 +13,16 @@ The source code is released under the MIT License.
 ### Usage ###
 #for external .txt files
     import RAKE
-    Rake = RAKE.Rake(<path_to_your_stopwords_file>);
+    Rake = RAKE.Rake(<path_to_your_stopwords_file>); #takes string datatype
     Rake.run(text);
-#for built in stoplists
+#for lists
     import RAKE
-    Rake = RAKE.Rake(<keyword>); #current keywords are SmartStopList and FoxStopList
+    Rake = RAKE.Rake(<list>); #takes list input
+    Rake.run(text);
+#RAKE.SmartStopList() and RAKE.FoxStopList() return the expected lists as lists, they can be used as shown bellow
+#for lists
+    import RAKE
+    Rake = RAKE.Rake(RAKE.SmartStopList()); #takes list input
     Rake.run(text);
 
 ### Credit ###
