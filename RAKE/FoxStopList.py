@@ -1,4 +1,4 @@
-list=['a',
+wordlist=['a',
  'about',
  'above',
  'across',
@@ -426,5 +426,5 @@ list=['a',
 
 
 def words():
-    return list
+    return wordlist
  
