@@ -4,7 +4,6 @@
 # Automatic keyword extraction from indi-vidual documents.
 # In M. W. Berry and J. Kogan (Eds.), Text Mining: Applications and Theory.unknown: John Wiley and Sons, Ltd.
 
-from __future__ import absolute_import
 import re
 import operator
 import six
@@ -77,7 +76,7 @@ def build_stop_word_regex(stop_word_list):
     return stop_word_pattern
 
 
-def generate_candidate_keywords(sentence_list, stopword_pattern, min_char_length=1, max_words_length=5):
+def generate_candidate_keywords(sentence_list, stopword_pattern, min_char_length, max_words_length):
     phrase_list = []
     for s in sentence_list:
         tmp = re.sub(stopword_pattern, '|', s.strip())
