@@ -91,29 +91,27 @@ def generate_candidate_keywords(sentence_list, stopword_pattern, min_char_length
 def is_acceptable(phrase, min_char_length, max_words_length):
     # a phrase must have a min length in characters
     if len(phrase) < min_char_length:
-        return 0
+        return False
 
     # a phrase must have a max number of words
     words = phrase.split()
     if len(words) > max_words_length:
-        return 0
+        return False
 
     digits = 0
     alpha = 0
-    for i in range(0, len(phrase)):
-        if phrase[i].isdigit():
+    for word in phrase:
+        if word.isdigit():
             digits += 1
-        elif phrase[i].isalpha():
+        elif word.isalpha():
             alpha += 1
 
     # a phrase must have at least one alpha character
-    if alpha == 0:
-        return 0
-
     # a phrase must have more alpha than digits characters
-    if digits > alpha:
-        return 0
-    return 1
+    if not alpha or digits > alpha:
+        return False
+
+    return True
 
 
 def calculate_word_scores(phraseList):
@@ -142,7 +140,7 @@ def calculate_word_scores(phraseList):
     return word_score
 
 
-def generate_candidate_keyword_scores(phrase_list, word_score, min_keyword_frequency=1):
+def generate_candidate_keyword_scores(phrase_list, word_score, min_keyword_frequency):
     keyword_candidates = {}
 
     for phrase in phrase_list:
