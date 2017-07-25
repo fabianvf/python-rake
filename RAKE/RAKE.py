@@ -6,8 +6,8 @@
 
 import re
 import operator
+
 import six
-from six.moves import range
 
 
 def is_number(s):
