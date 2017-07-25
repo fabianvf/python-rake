@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 # Implementation of RAKE - Rapid Automtic Keyword Exraction algorithm
 # as described in:
 # Rose, S., D. Engel, N. Cramer, and W. Cowley (2010).
@@ -16,13 +17,13 @@ def is_number(s):
         return False
 
 
-def SmartStopList():
-    import SmartStopList
+def smart_stop_list():
+    from . import SmartStopList
     return SmartStopList.words()
 
 
-def FoxStopList():
-    import FoxStopList
+def fox_stop_list():
+    from . import FoxStopList
     return FoxStopList.words()
 
 
