@@ -154,7 +154,7 @@ class Rake(object):
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
-            if delimiter != ' ' && divide == False:
+            if delimiter != ' ' and divide == False:
                 #send error and stop here
                 else:
                     if divide == True:
