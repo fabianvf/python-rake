@@ -34,6 +34,15 @@ for lists:
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList());
     
+#### Additional Parameters ####
+    import RAKE
+    Rake = RAKE.Rake([stopwords,
+                     [minimum_number_of_characters_each_word_should_have],
+                     [maximum_number_of_words_each_phrase_should_have],
+                     [minimum_number_of_times_each_keyword_should_appear]);
+    # You can use one of the stoplists included in the repository under stoplists/
+
+
 ### Releases ###
 I will push releases to pypi periodically, but if there is a feature in master not built/pushed and you want it to be, just ping me.
  
