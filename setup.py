@@ -26,6 +26,10 @@ setup(
     author='Tomás Pinho <me@tomaspinho.com>, Fabian von Feilitzsch <fabian@fabianism.us>',
     author_email='fabian@fabianism.us',
 
+    install_requires=[
+        'six'
+    ],
+
     # Choose your license
     license='MIT',
 
