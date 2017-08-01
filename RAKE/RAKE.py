@@ -27,6 +27,16 @@ def FoxStopList():
     return FoxStopList.words()
 
 
+def MySQLStopList():
+    from .stoplists import MySQLStopList
+    return MySQLStopList.words()
+
+
+def NLTKStopList():
+    from .stoplists import NLTKStopList
+    return NLTKStopList.words()
+
+
 def load_stop_words(stop_word_file):
     """
     Utility function to load stop words from a file and return as a list of words
