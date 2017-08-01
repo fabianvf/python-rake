@@ -17,13 +17,13 @@ def is_number(s):
         return False
 
 
-def smart_stop_list():
-    from . import SmartStopList
+def SmartStopList():
+    from .stoplists import SmartStopList
     return SmartStopList.words()
 
 
-def fox_stop_list():
-    from . import FoxStopList
+def FoxStopList():
+    from .stoplists import FoxStopList
     return FoxStopList.words()
 
 

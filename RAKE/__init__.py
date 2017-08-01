@@ -1,4 +1,4 @@
 try:
-    from RAKE import Rake, smart_stop_list, fox_stop_list  # NOQA
+    from RAKE import Rake, SmartStopList, FoxStopList  # NOQA
 except ImportError:
-    from RAKE.RAKE import Rake, smart_stop_list, fox_stop_list  # NOQA
+    from RAKE.RAKE import Rake, SmartStopList, FoxStopList  # NOQA
