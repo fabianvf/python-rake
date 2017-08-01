@@ -16,7 +16,7 @@ The source code is released under the MIT License.
     pip install python-rake #or pip3
 
 ### Usage ###
-for external .txt files
+For external text (`.txt`) files:
 take path as string datatype. words can be on same or different lines but must be seperated by spaces.
 
     import RAKE
@@ -25,9 +25,14 @@ take path as string datatype. words can be on same or different lines but must b
 
 By default this takes plain text files without commas. Multiple words on each line seperated by spaces will be broken appart by default, so horizontal lists work as well. 
 
-RAKE.Rake(<list>) is actually set to RAKE.Rake(<list>, divide = True, delimiter = ' '), where delimeter controls what it's split over and divide controls whether or lines are split at all. This way you can change either of those flags to your desired state if needed to read your file. Note that you can't change both defaults at once, because then delimeters would be included in the stopwords list, which is bad.
+For external `.csv` and atypical stopword formattings:
 
-for lists:
+`RAKE.Rake(<list>)` has additional flags: `RAKE.Rake(<list>, divide = True, delimiter = ' ')` (default values shown)
+
+Delimeter controls what split within a line (like a comma for `.csv`, empty "words" are excluded) and divide controls whether lines are split at all. Change flags as appropriate, like #@fabianvf example
+Note that you can't change both defaults at once, because then delimeters would be included in the stopwords list, which would be bad.
+
+For lists:
 
     import RAKE
     Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
