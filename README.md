@@ -23,6 +23,10 @@ take path as string datatype. words can be on same or different lines but must b
     Rake = RAKE.Rake(<path_to_your_stopwords_file>)
     Rake.run(text);
 
+By default this takes plain text files without commas. Multiple words on each line seperated by spaces will be broken appart by default, so horizontal lists work as well. 
+
+RAKE.Rake(<list>) is actually set to RAKE.Rake(<list>, divide = True, delimiter = ' '), where delimeter controls what it's split over and divide controls whether or lines are split at all. This way you can change either of those flags to your desired state if needed to read your file. Note that you can't change both defaults at once (think about how a .csv file works and you'll see why).
+
 for lists:
 
     import RAKE
