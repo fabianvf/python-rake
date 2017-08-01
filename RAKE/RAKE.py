@@ -49,6 +49,21 @@ def load_stop_words(stop_word_file):
             stop_words.append(word)
     return stop_words
 
+def load_stop_words_delimiter(stop_word_file,delimiter):
+    """
+    Utility function to load stop words from a file and return as a list of words
+    @param stop_word_file Path and file name of a file containing stop words.
+    @return list A list of stop words.
+    """
+    stop_words = []
+    for line in open(stop_word_file):
+        for word in line.split(delimiter):  # in case more than one per line
+            #handles .csvs or a comma seperated list, or equivalent. 
+            #'asd,'.split(',') returns ['asd', ''] but 'asd '.split() returns 'asd'
+            if word !='': 
+                stop_words.append(word)
+    return stop_words
+
 
 def separate_words(text, min_word_return_size):
     """
@@ -133,12 +148,15 @@ def generate_candidate_keyword_scores(phrase_list, word_score):
 
 
 class Rake(object):
-    def __init__(self, stop_words):
+    def __init__(self, stop_words, delimiter = ' '):
         #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
-            self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words))  # handles normal file paths
+            if delimiter == ' ':
+                self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words))  # handles normal file paths
+            else:
+                self.__stop_words_pattern = build_stop_word_regex(load_stop_words_delimiter(stop_words,delimiter))
 
     def run(self, text):
         sentence_list = split_sentences(text)
