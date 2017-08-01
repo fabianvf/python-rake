@@ -29,7 +29,7 @@ for lists:
     Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
     Rake.run(text)
 
-`RAKE.SmartStopList()` and `RAKE.FoxStopList()` return the expected lists as lists, they can be used as shown bellow:
+`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, return the expected lists as lists, they can be used as shown bellow:
 
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList())
@@ -40,3 +40,8 @@ I will push releases to pypi periodically, but if there is a feature in master n
  
 ### Credit ###
 This is a maintained fork of the original python RAKE project, which can be found here: https://github.com/aneesha/RAKE
+The Fox Stopwords list was originally created by Christopher Fox, http://dl.acm.org/citation.cfm?id=378888
+The Smart stopwords list was originally created by Gerard Salton and Chris Buckley for the experimental SMART information retrieval system at Cornell University.
+The MySQL stopwords list is (surprisingly) from MySQL, owned and mainted by Oracle and under the GPL2 license.
+The NTLK stopword lists were created by the NLTK project under the Apache license, project here: https://github.com/nltk/nltk
+
