@@ -16,20 +16,18 @@ The source code is released under the MIT License.
     pip install python-rake #or pip3
 
 ### Usage ###
-For external text (`.txt`) files:
-take path as string datatype. words can be on same or different lines but must be seperated by spaces.
+For external `.txt`, `.csv`, etc files:
+take path as string datatype. words can be on same or different lines but must be seperated by non-word characters
 
     import RAKE
     Rake = RAKE.Rake(<path_to_your_stopwords_file>)
     Rake.run(text);
 
-By default, words on each line will be broken appart by spaces (and only spaces) and added to the this as such. This will also remove trailing spaces (or other delimiters). To stop lines being divded, use the flag `divide=False`. Do use a delimiter other than space, use the flag delimiter=<delimeter as a string>, this of course is ignored if you use it with divide=False. 
+Changing file read-in:
 
-Given the above, to read a `.csv` file, you would use:
+By default, words on each line will be broken appart non-word characters (commas, slashes, spaces, dashes, periods etc.). In this, all non-word characters will be removed, included trailing ones, repeated ones, and dissimilar ones. *This means that single-line lists work fine along with multi-line lists*. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages.
 
-    import RAKE
-    Rake = RAKE.Rake(<path_to_your_stopwords_file>, delimiter=',')
-    Rake.run(text);
+To stop lines being divided, use the flag `divide=False`. To use a delimiter character other than non-word characters, use the flag `delimiter = <delimeter as a string>`, which is ignored if used with `divide = False`. 
 
 For lists:
 
