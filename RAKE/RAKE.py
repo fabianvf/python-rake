@@ -37,18 +37,23 @@ def NLTKStopList():
     return NLTKStopList.words()
 
 
-def load_stop_words(stop_word_file, divide):
+def load_stop_words(stop_word_file, divide, delimiter):
     """
     Utility function to load stop words from a file and return as a list of words
     @param stop_word_file Path and file name of a file containing stop words.
     @return list A list of stop words.
     """
     stop_words = []
-    for line in open(stop_word_file):
-        if divide:
-            for word in line.split():  # in case more than one per line
-                stop_words.append(word)
+    if divide:
+        for line in open(stop_word_file):
+            for word in #magic re.split code
+                if word != '' or ' ':
+                    stop_words.append(word)
+    else:
+        for line in open(stop_word_file):
+                    stop_words.append(line)
     return stop_words
+    
 
 def load_stop_words_delimiter(stop_word_file, delimiter):
     """
@@ -154,13 +159,16 @@ class Rake(object):
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
-            if delimiter != ' ' and divide == False:
+            if divide:
+                self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words,divide,delimiter))
+            
+            """delimiter != ' ' and divide == False:
                 #send error and stop here
                 else:
                     if divide == True:
-                        self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words,divide))
+                        
                     else:
-                        self.__stop_words_pattern = build_stop_word_regex(load_stop_words_delimiter(stop_words,delimiter))
+                        self.__stop_words_pattern = build_stop_word_regex(load_stop_words_delimiter(stop_words,delimiter))"""
 
     def run(self, text):
         sentence_list = split_sentences(text)
