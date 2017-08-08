@@ -23,14 +23,13 @@ take path as string datatype. words can be on same or different lines but must b
     Rake = RAKE.Rake(<path_to_your_stopwords_file>)
     Rake.run(text);
 
-By default this takes plain text files without commas. Multiple words on each line seperated by spaces will be broken appart by default, so horizontal lists work as well. 
+By default, words on each line will be broken appart by spaces (and only spaces) and added to the this as such. This will also remove trailing spaces (or other delimiters). To stop lines being divded, use the flag `divide=False`. Do use a delimiter other than space, use the flag delimiter=<delimeter as a string>, this of course is ignored if you use it with divide=False. 
 
-For external `.csv` and atypical stopword formattings:
+Given the above, to read a `.csv` file, you would use:
 
-`RAKE.Rake(<list>)` has additional flags: `RAKE.Rake(<list>, divide = True, delimiter = ' ')` (default values shown)
-
-Delimeter controls what split within a line (like a comma for `.csv`, empty "words" are excluded) and divide controls whether lines are split at all. Change flags as appropriate, like #@fabianvf example
-Note that you can't change both defaults at once, because then delimeters would be included in the stopwords list, which would be bad.
+    import RAKE
+    Rake = RAKE.Rake(<path_to_your_stopwords_file>, delimiter=',')
+    Rake.run(text);
 
 For lists:
 
