@@ -25,9 +25,9 @@ take path as string datatype. words can be on same or different lines but must b
 
 Changing file read-in:
 
-By default, words on each line will be broken appart non-word characters (commas, slashes, spaces, dashes, periods etc.). In this, all non-word characters will be removed, included trailing ones, repeated ones, and dissimilar ones. *This means that single-line lists work fine along with multi-line lists*. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages.
+By default, words on each line will be broken appart by \W+ in regex. This means non-word characters (commas, slashes, spaces, dashes, periods etc.), included removing trailing ones, repeated ones, and dissimilar ones. *This means that single-line lists work fine along with multi-line lists*. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages.
 
-To stop lines being divided, use the flag `divide=False`. To use a delimiter character other than non-word characters, use the flag `delimiter = <delimeter as a string>`, which is ignored if used with `divide = False`. 
+To stop lines being divided, use the flag `divide=False`. To use a delimiter character other than non-word characters, use the flag `delimiter = <regex flag of your choosing as string>`, which is ignored if used with `divide = False`. 
 
 For lists:
 
