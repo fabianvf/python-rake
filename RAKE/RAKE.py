@@ -46,12 +46,12 @@ def load_stop_words(stop_word_file, divide, delimiter):
     stop_words = []
     if divide:
         for line in open(stop_word_file):
-            for word in re.split(delimiter, stopword_file):
-                if word != '' or ' ':
+            for word in re.split(delimiter, stop_word_file):
+                if word not in ['', ' ']:
                     stop_words.append(word)
     else:
         for line in open(stop_word_file):
-            if line != '' or ' ': #I figure this is going to make someones life much easier
+            if word not in ['', ' ']:
                 stop_words.append(line)
     return stop_words
 
@@ -144,14 +144,6 @@ class Rake(object):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
             self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words,divide,delimiter))
-            
-            """delimiter != ' ' and divide == False:
-                #send error and stop here
-                else:
-                    if divide == True:
-                        
-                    else:
-                        self.__stop_words_pattern = build_stop_word_regex(load_stop_words_delimiter(stop_words,delimiter))"""
 
     def run(self, text):
         sentence_list = split_sentences(text)
