@@ -36,6 +36,17 @@ def NLTKStopList():
     from .stoplists import NLTKStopList
     return NLTKStopList.words()
 
+def GoogleSearchStopList():
+    from .stoplists import GoogleSearchStopList
+    return GoogleSearchStopList.words()
+
+def RanksNLLongStopList():
+    from .stoplists import RanksNLLongStopList
+    return RanksNLLongStopList.words()
+
+def RanksNLStoplist():
+    from .stoplists import RanksNLStoplist
+    return RanksNLStoplist.words()
 
 def load_stop_words(stop_word_file, regex):
     with open(stop_word_file) as stop_word_file:
