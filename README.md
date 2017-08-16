@@ -17,17 +17,15 @@ The source code is released under the MIT License.
 
 ### Usage ###
 For external `.txt`, `.csv`, etc files:
-take path as string datatype. words can be on same or different lines but must be seperated by non-word characters
+Take path as string datatype. words can be on same or different lines but must be seperated by non-word characters. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages, as they haven't been thoroughly tested.
 
     import RAKE
     Rake = RAKE.Rake(<path_to_your_stopwords_file>)
     Rake.run(text);
 
-Changing file read-in:
+To change how a file is read-in, simply use the code below. The built in regex described above is [\W\n]+.
 
-By default, words on each line will be broken appart by \W+ in regex. This means non-word characters (commas, slashes, spaces, dashes, periods etc.), included removing trailing ones, repeated ones, and dissimilar ones. *This means that single-line lists work fine along with multi-line lists*. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages.
-
-To stop lines being divided, use the flag `divide=False`. To use a delimiter character other than non-word characters, use the flag `delimiter = <regex flag of your choosing as string>`, which is ignored if used with `divide = False`. 
+    `RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>' )`
 
 For lists:
 
@@ -41,7 +39,7 @@ For lists:
     Rake = RAKE.Rake(RAKE.SmartStopList())
     Rake.run(text)
 
-Other stoplists and stoplists other languages can be found at https://github.com/trec-kba/many-stop-words/tree/master/orig, at http://www.ranks.nl/stopwords and in the NLTK stopwords package
+Other stoplists and stoplists in other languages can be found at https://github.com/trec-kba/many-stop-words/tree/master/orig, at http://www.ranks.nl/stopwords and in the NLTK stopwords package
     
 ### Releases ###
 I will push releases to pypi periodically, but if there is a feature in master not built/pushed and you want it to be, just ping me.
@@ -52,4 +50,4 @@ The Fox Stopwords list was originally created by Christopher Fox, http://dl.acm.
 The Smart stopwords list was originally created by Gerard Salton and Chris Buckley for the experimental SMART information retrieval system at Cornell University.
 The MySQL stopwords list is (surprisingly) from MySQL, owned and mainted by Oracle and under the GPL2 license.
 The NTLK stopword list was created by the NLTK project under the Apache license, project here: https://github.com/nltk/nltk
-The Ranks NL stopword lists were created by Ranks NL, who said via email that we could include them in this package if we credited them.
+The Ranks NL stopword lists were created by Ranks NL, who also compiled the Google Search stopword list, who said via email that we could include them in this package if we credited them.
