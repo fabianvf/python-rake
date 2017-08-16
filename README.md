@@ -35,7 +35,7 @@ For lists:
     Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
     Rake.run(text)
 
-`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow:
+`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
 
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList())
@@ -52,4 +52,4 @@ The Fox Stopwords list was originally created by Christopher Fox, http://dl.acm.
 The Smart stopwords list was originally created by Gerard Salton and Chris Buckley for the experimental SMART information retrieval system at Cornell University.
 The MySQL stopwords list is (surprisingly) from MySQL, owned and mainted by Oracle and under the GPL2 license.
 The NTLK stopword list was created by the NLTK project under the Apache license, project here: https://github.com/nltk/nltk
-
+The Ranks NL stopword lists were created by Ranks NL, who said via email that we could include them in this package if we credited them.
