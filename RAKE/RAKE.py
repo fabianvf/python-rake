@@ -36,21 +36,25 @@ def NLTKStopList():
     from .stoplists import NLTKStopList
     return NLTKStopList.words()
 
+
 def GoogleSearchStopList():
     from .stoplists import GoogleSearchStopList
     return GoogleSearchStopList.words()
+
 
 def RanksNLLongStopList():
     from .stoplists import RanksNLLongStopList
     return RanksNLLongStopList.words()
 
+
 def RanksNLStoplist():
     from .stoplists import RanksNLStoplist
     return RanksNLStoplist.words()
 
+
 def load_stop_words(stop_word_file, regex):
     with open(stop_word_file) as stop_word_file:
-       stop_words = re.split(regex, stop_word_file.read())
+        stop_words = re.split(regex, stop_word_file.read())
     return [word for word in stop_words if word not in ('', ' ')]  # filters empty string matches
 
 
@@ -85,8 +89,7 @@ def build_stop_word_regex(stop_word_list):
     for word in stop_word_list:
         word_regex = r'\b' + word + r'(?![\w-])'
         stop_word_regex_list.append(word_regex)
-    stop_word_pattern = re.compile('|'.join(stop_word_regex_list), re.IGNORECASE)
-    return stop_word_pattern
+    return re.compile('|'.join(stop_word_regex_list), re.IGNORECASE)
 
 
 def generate_candidate_keywords(sentence_list, stopword_pattern):
@@ -142,7 +145,7 @@ class Rake(object):
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
-            self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words,regex))
+            self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words, regex))
 
     def run(self, text):
         sentence_list = split_sentences(text)
