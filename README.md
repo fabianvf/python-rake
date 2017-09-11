@@ -23,7 +23,7 @@ Takes path as string datatype. Words can be on same or different lines but must 
     Rake = RAKE.Rake(<path_to_your_stopwords_file>)
     Rake.run(<text>);
 
-To change how a file is read-in, simply use the code below. The built in regex described above is [\W\n]+.
+To change how a file is read-in, simply use the code below. The default regex described above is [\W\n]+.
 
     `RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')`
 
