@@ -92,14 +92,14 @@ def build_stop_word_regex(stop_word_list):
     return re.compile('|'.join(stop_word_regex_list), re.IGNORECASE)
 
 
-def generate_candidate_keywords(sentence_list, stopword_pattern):
+def generate_candidate_keywords(sentence_list, stop_word_pattern, minCharacters, maxWords):
     phrase_list = []
     for s in sentence_list:
-        tmp = re.sub(stopword_pattern, '|', s.strip())
+        tmp = re.sub(stop_word_pattern, '|', s.strip())
         phrases = tmp.split("|")
         for phrase in phrases:
             phrase = phrase.strip().lower()
-            if phrase != "":
+            if phrase != '' and len(phrase) >= minCharacters and len(phrase.split()) <= maxWords:
                 phrase_list.append(phrase)
     return phrase_list
 
