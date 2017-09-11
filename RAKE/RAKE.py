@@ -146,6 +146,10 @@ class Rake(object):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
             self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words, regex))
+            
+        self.__minCharacters = minCharacters
+        self.__maxWords = maxWords
+        self.__minFrequency=minFrequency
 
     def run(self, text):
         sentence_list = split_sentences(text)
