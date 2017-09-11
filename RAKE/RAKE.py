@@ -127,7 +127,7 @@ def calculate_word_scores(phraseList):
     return word_score
 
 
-def generate_candidate_keyword_scores(phrase_list, word_score):
+def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
     keyword_candidates = {}
     for phrase in phrase_list:
         keyword_candidates.setdefault(phrase, 0)
@@ -158,7 +158,7 @@ class Rake(object):
 
         word_scores = calculate_word_scores(phrase_list)
 
-        keyword_candidates = generate_candidate_keyword_scores(phrase_list, word_scores)
+        keyword_candidates = generate_candidate_keyword_scores(phrase_list, word_scores, self.__minFrequency)
 
         sorted_keywords = sorted(keyword_candidates.items(), key=operator.itemgetter(1), reverse=True)
         return sorted_keywords
