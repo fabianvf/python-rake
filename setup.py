@@ -26,6 +26,10 @@ setup(
     author='Tomás Pinho <me@tomaspinho.com>, Fabian von Feilitzsch <fabian@fabianism.us>',
     author_email='fabian@fabianism.us',
 
+    install_requires=[
+        'six'
+    ],
+    
     # Choose your license
     license='MIT',
 
@@ -53,9 +57,13 @@ setup(
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.1',
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
 
     # What does your project relate to?
