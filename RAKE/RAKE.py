@@ -130,12 +130,13 @@ def calculate_word_scores(phraseList):
 def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
     keyword_candidates = {}
     for phrase in phrase_list:
-        keyword_candidates.setdefault(phrase, 0)
-        word_list = separate_words(phrase, 0)
-        candidate_score = 0
-        for word in word_list:
-            candidate_score += word_score[word]
-        keyword_candidates[phrase] = candidate_score
+        if phrase_list.count(phrase) >= minFrequency:
+            keyword_candidates.setdefault(phrase, 0)
+            word_list = separate_words(phrase, 0)
+            candidate_score = 0
+            for word in word_list:
+                candidate_score += word_score[word]
+            keyword_candidates[phrase] = candidate_score
     return keyword_candidates
 
 
