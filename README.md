@@ -33,7 +33,7 @@ For lists:
     Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
     Rake.run(text)
 
-`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
+`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLLongStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
 
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList())
