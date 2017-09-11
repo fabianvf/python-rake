@@ -17,7 +17,7 @@ The source code is released under the MIT License.
 
 ### Usage ###
 For external `.txt`, `.csv`, etc files:
-Take path as string datatype. words can be on same or different lines but must be seperated by non-word characters. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages, as they haven't been thoroughly tested.
+Takes path as string datatype. Words can be on same or different lines but must be seperated by non-word characters. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages, as they haven't been thoroughly tested.
 
     import RAKE
     Rake = RAKE.Rake(<path_to_your_stopwords_file>)
