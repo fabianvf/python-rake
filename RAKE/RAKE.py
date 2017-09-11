@@ -149,12 +149,12 @@ class Rake(object):
             
         self.__minCharacters = minCharacters
         self.__maxWords = maxWords
-        self.__minFrequency=minFrequency
+        self.__minFrequency = minFrequency
 
     def run(self, text):
         sentence_list = split_sentences(text)
 
-        phrase_list = generate_candidate_keywords(sentence_list, self.__stop_words_pattern)
+        phrase_list = generate_candidate_keywords(sentence_list, self.__stop_words_pattern, self.__minCharacters, self.__maxWords, )
 
         word_scores = calculate_word_scores(phrase_list)
 
