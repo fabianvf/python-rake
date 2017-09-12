@@ -58,7 +58,7 @@ def load_stop_words(stop_word_file, regex):
     return [word for word in stop_words if word not in ('', ' ')]  # filters empty string matches
 
 
-def separate_words(text, min_word_return_size):
+def separate_words(text):
     """
     Utility function to return a list of all words that are have a length greater than a specified number of characters.
     @param text The text that must be split in to words.
@@ -69,7 +69,7 @@ def separate_words(text, min_word_return_size):
     for single_word in splitter.split(text):
         current_word = single_word.strip().lower()
         # leave numbers in phrase, but don't count as words, since they tend to invalidate scores of their phrases
-        if len(current_word) > min_word_return_size and current_word != '' and not is_number(current_word):
+        if current_word != '' and not is_number(current_word):
             words.append(current_word)
     return words
 
@@ -108,7 +108,7 @@ def calculate_word_scores(phraseList):
     word_frequency = {}
     word_degree = {}
     for phrase in phraseList:
-        word_list = separate_words(phrase, 0)
+        word_list = separate_words(phrase)
         word_list_length = len(word_list)
         word_list_degree = word_list_length - 1
         for word in word_list:
