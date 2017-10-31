@@ -17,27 +17,35 @@ The source code is released under the MIT License.
 
 ### Usage ###
 For external `.txt`, `.csv`, etc files:
-Take path as string datatype. words can be on same or different lines but must be seperated by non-word characters. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages, as they haven't been thoroughly tested.
+Takes path as string datatype. Words can be on same or different lines but must be seperated by non-word characters. This should support all languages as it's based on unicode, but please validate the results of and report any issues with non-western languages, as they haven't been thoroughly tested.
 
     import RAKE
     Rake = RAKE.Rake(<path_to_your_stopwords_file>)
-    Rake.run(text);
+    Rake.run(<text>);
 
-To change how a file is read-in, simply use the code below. The built in regex described above is [\W\n]+.
+To change how a file is read-in, simply use the code below. The default regex described above is [\W\n]+.
 
-    `RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>' )`
+    `RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')`
 
 For lists:
 
     import RAKE
     Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
-    Rake.run(text)
+    Rake.run(<text>)
 
-`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
+`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLLongStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
 
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList())
-    Rake.run(text)
+    Rake.run(<text>)
+    
+Additional flags:
+    
+The RAKE.rake function also accepts minCharacters, maxWords and minFrequency flags to better tune your outputs. minCharacters is the minimum characters allowed in a keyword. maxWords is the maximum number of words allowed in a phrase considered as a keyword. minFrequency is the minimum number of occurances a keyword has to have to be considered as a keyword. An example of this which shows the default values is as follows:
+
+    import RAKE
+    Rake = RAKE.Rake(RAKE.SmartStopList())
+    Rake.run(<text>, minCharacters = 1, maxWords = 5, minFrequency = 1)
 
 Other stoplists and stoplists in other languages can be found at https://github.com/trec-kba/many-stop-words/tree/master/orig, at http://www.ranks.nl/stopwords and in the NLTK stopwords package
     

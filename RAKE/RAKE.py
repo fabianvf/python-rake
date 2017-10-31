@@ -58,18 +58,18 @@ def load_stop_words(stop_word_file, regex):
     return [word for word in stop_words if word not in ('', ' ')]  # filters empty string matches
 
 
-def separate_words(text, min_word_return_size):
+def separate_words(text):
     """
     Utility function to return a list of all words that are have a length greater than a specified number of characters.
     @param text The text that must be split in to words.
     @param min_word_return_size The minimum no of characters a word must have to be included.
     """
-    splitter = re.compile('[^a-zA-Z0-9_\\+\\-/]')
+    splitter = re.compile('/W+')
     words = []
     for single_word in splitter.split(text):
         current_word = single_word.strip().lower()
         # leave numbers in phrase, but don't count as words, since they tend to invalidate scores of their phrases
-        if len(current_word) > min_word_return_size and current_word != '' and not is_number(current_word):
+        if current_word != '' and not is_number(current_word):
             words.append(current_word)
     return words
 
@@ -79,7 +79,7 @@ def split_sentences(text):
     Utility function to return a list of sentences.
     @param text The text that must be split in to sentences.
     """
-    sentence_delimiters = re.compile(u'[.!?,;:\t\\\\"\\(\\)\\\'\u2019\u2013]|\\s\\-\\s')
+    sentence_delimiters = re.compile(u'[.!?,;:\t\\\\"\\(\\)\\\'\u2019\u2013]|\\s\\-\\s') #upgrade as appropriate, fabian had changed version?
     sentences = sentence_delimiters.split(text)
     return sentences
 
@@ -92,14 +92,14 @@ def build_stop_word_regex(stop_word_list):
     return re.compile('|'.join(stop_word_regex_list), re.IGNORECASE)
 
 
-def generate_candidate_keywords(sentence_list, stopword_pattern):
+def generate_candidate_keywords(sentence_list, stop_word_pattern, minCharacters, maxWords):
     phrase_list = []
     for s in sentence_list:
-        tmp = re.sub(stopword_pattern, '|', s.strip())
+        tmp = re.sub(stop_word_pattern, '|', s.strip())
         phrases = tmp.split("|")
         for phrase in phrases:
             phrase = phrase.strip().lower()
-            if phrase != "":
+            if phrase != '' and len(phrase) >= minCharacters and len(phrase.split()) <= maxWords:
                 phrase_list.append(phrase)
     return phrase_list
 
@@ -108,7 +108,7 @@ def calculate_word_scores(phraseList):
     word_frequency = {}
     word_degree = {}
     for phrase in phraseList:
-        word_list = separate_words(phrase, 0)
+        word_list = separate_words(phrase)
         word_list_length = len(word_list)
         word_list_degree = word_list_length - 1
         for word in word_list:
@@ -127,34 +127,39 @@ def calculate_word_scores(phraseList):
     return word_score
 
 
-def generate_candidate_keyword_scores(phrase_list, word_score):
+def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
     keyword_candidates = {}
     for phrase in phrase_list:
-        keyword_candidates.setdefault(phrase, 0)
-        word_list = separate_words(phrase, 0)
-        candidate_score = 0
-        for word in word_list:
-            candidate_score += word_score[word]
-        keyword_candidates[phrase] = candidate_score
+        if phrase_list.count(phrase) >= minFrequency:
+            keyword_candidates.setdefault(phrase, 0)
+            word_list = separate_words(phrase)
+            candidate_score = 0
+            for word in word_list:
+                candidate_score += word_score[word]
+            keyword_candidates[phrase] = candidate_score
     return keyword_candidates
 
 
 class Rake(object):
-    def __init__(self, stop_words, regex='[\W\n]+'):
+    def __init__(self, stop_words, regex = '[\W\n]+', minCharacters = 1, maxWords = 5, minFrequency = 1):
         #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
             self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words, regex))
+            
+        self.__minCharacters = minCharacters
+        self.__maxWords = maxWords
+        self.__minFrequency = minFrequency
 
     def run(self, text):
         sentence_list = split_sentences(text)
 
-        phrase_list = generate_candidate_keywords(sentence_list, self.__stop_words_pattern)
+        phrase_list = generate_candidate_keywords(sentence_list, self.__stop_words_pattern, self.__minCharacters, self.__maxWords, )
 
         word_scores = calculate_word_scores(phrase_list)
 
-        keyword_candidates = generate_candidate_keyword_scores(phrase_list, word_scores)
+        keyword_candidates = generate_candidate_keyword_scores(phrase_list, word_scores, self.__minFrequency)
 
         sorted_keywords = sorted(keyword_candidates.items(), key=operator.itemgetter(1), reverse=True)
         return sorted_keywords
