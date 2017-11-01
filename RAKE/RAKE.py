@@ -79,7 +79,7 @@ def split_sentences(text):
     Utility function to return a list of sentences.
     @param text The text that must be split in to sentences.
     """
-    sentence_delimiters = re.compile(u'[.!?,;:\t\\\\"\\(\\)\\\'\u2019\u2013]|\\s\\-\\s') #upgrade as appropriate, fabian had changed version?
+    sentence_delimiters = re.compile('[.!?,;:\t\\\\"\\(\\)\\\'\u2019\u2013]|\\s\\-\\s')
     sentences = sentence_delimiters.split(text)
     return sentences
 
@@ -141,13 +141,13 @@ def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
 
 
 class Rake(object):
-    def __init__(self, stop_words, regex = '[\W\n]+', minCharacters = 1, maxWords = 5, minFrequency = 1):
+    def __init__(self, stop_words, regex='[\W\n]+', minCharacters=1, maxWords=5, minFrequency=1):
         #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
         else:
             self.__stop_words_pattern = build_stop_word_regex(load_stop_words(stop_words, regex))
-            
+
         self.__minCharacters = minCharacters
         self.__maxWords = maxWords
         self.__minFrequency = minFrequency
