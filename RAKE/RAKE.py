@@ -141,7 +141,7 @@ def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
 
 
 class Rake(object):
-    def __init__(self, stop_words, regex='[\W\n]+', minCharacters=1, maxWords=5, minFrequency=1):
+    def __init__(self, stop_words):
         #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
@@ -153,13 +153,13 @@ class Rake(object):
         self.__minFrequency = minFrequency
 
     def run(self, text):
-        sentence_list = split_sentences(text)
+        sentence_list = split_sentences(text, regex='[\W\n]+', minCharacters=1, maxWords=5, minFrequency=1)
 
-        phrase_list = generate_candidate_keywords(sentence_list, self.__stop_words_pattern, self.__minCharacters, self.__maxWords, )
+        phrase_list = generate_candidate_keywords(sentence_list, self.__stop_words_pattern, minCharacters, maxWords)
 
         word_scores = calculate_word_scores(phrase_list)
 
-        keyword_candidates = generate_candidate_keyword_scores(phrase_list, word_scores, self.__minFrequency)
+        keyword_candidates = generate_candidate_keyword_scores(phrase_list, word_scores, minFrequency)
 
         sorted_keywords = sorted(keyword_candidates.items(), key=operator.itemgetter(1), reverse=True)
         return sorted_keywords
