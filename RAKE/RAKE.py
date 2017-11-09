@@ -64,7 +64,7 @@ def separate_words(text):
     @param text The text that must be split in to words.
     @param min_word_return_size The minimum no of characters a word must have to be included.
     """
-    splitter = re.compile('/W+')
+    splitter = re.compile('\W+')
     words = []
     for single_word in splitter.split(text):
         current_word = single_word.strip().lower()
