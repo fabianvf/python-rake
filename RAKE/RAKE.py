@@ -152,8 +152,8 @@ class Rake(object):
         self.__maxWords = maxWords
         self.__minFrequency = minFrequency
 
-    def run(self, text):
-        sentence_list = split_sentences(text, regex='[\W\n]+', minCharacters=1, maxWords=5, minFrequency=1)
+    def run(self, text, regex='[\W\n]+', minCharacters=1, maxWords=5, minFrequency=1):
+        sentence_list = split_sentences(text)
 
         phrase_list = generate_candidate_keywords(sentence_list, self.__stop_words_pattern, minCharacters, maxWords)
 
