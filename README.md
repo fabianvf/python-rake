@@ -25,7 +25,7 @@ Takes path as string datatype. Words can be on same or different lines but must 
 
 To change how a file is read-in, simply use the code below. The default regex described above is [\W\n]+.
 
-    `RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')`
+    RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')
 
 For lists:
 
@@ -41,11 +41,11 @@ For lists:
     
 Additional flags:
     
-The RAKE.rake function also accepts minCharacters, maxWords and minFrequency flags to better tune your outputs. minCharacters is the minimum characters allowed in a keyword. maxWords is the maximum number of words allowed in a phrase considered as a keyword. minFrequency is the minimum number of occurances a keyword has to have to be considered as a keyword. An example of this which shows the default values is as follows:
+The `RAKE.Rake` function also accepts `minCharacters`, `maxWords` and `minFrequency` flags to better tune your outputs. `minCharacters` is the minimum characters allowed in a keyword. `maxWords` is the maximum number of words allowed in a phrase considered as a keyword. `minFrequency` is the minimum number of occurances a keyword has to have to be considered as a keyword. An example of this which shows the default values is as follows:
 
     import RAKE
-    Rake = RAKE.Rake(RAKE.SmartStopList())
-    Rake.run(<text>, minCharacters = 1, maxWords = 5, minFrequency = 1)
+    Rake = RAKE.Rake(RAKE.SmartStopList(), minCharacters = 1, maxWords = 5, minFrequency = 1)
+    Rake.run(<text>)
 
 Other stoplists and stoplists in other languages can be found at https://github.com/trec-kba/many-stop-words/tree/master/orig, at http://www.ranks.nl/stopwords and in the NLTK stopwords package
     
