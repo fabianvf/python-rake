@@ -89,7 +89,7 @@ def build_stop_word_regex(stop_word_list):
     for word in stop_word_list:
         word_regex = r'\b' + word + r'(?![\w-])'
         stop_word_regex_list.append(word_regex)
-    return re.compile('(?u)'+'|'.join(stop_word_regex_list), re.IGNORECASE)
+    return re.compile('(?u)' + '|'.join(stop_word_regex_list), re.IGNORECASE)
 
 
 def generate_candidate_keywords(sentence_list, stop_word_pattern, minCharacters, maxWords):
