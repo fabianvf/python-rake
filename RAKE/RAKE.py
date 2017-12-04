@@ -64,7 +64,7 @@ def separate_words(text):
     @param text The text that must be split in to words.
     @param min_word_return_size The minimum no of characters a word must have to be included.
     """
-    splitter = re.compile('\W+')
+    splitter = re.compile('(?u)\W+')
     words = []
     for single_word in splitter.split(text):
         current_word = single_word.strip().lower()
@@ -89,7 +89,7 @@ def build_stop_word_regex(stop_word_list):
     for word in stop_word_list:
         word_regex = r'\b' + word + r'(?![\w-])'
         stop_word_regex_list.append(word_regex)
-    return re.compile('|'.join(stop_word_regex_list), re.IGNORECASE)
+    return re.compile('(?u)'+'|'.join(stop_word_regex_list), re.IGNORECASE)
 
 
 def generate_candidate_keywords(sentence_list, stop_word_pattern, minCharacters, maxWords):
