@@ -25,7 +25,7 @@ Takes path as string datatype. Words can be on same or different lines but must 
 
 To change how a file is read-in, simply use the code below. The default regex described above is [\W\n]+.
 
-    `RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')`
+    RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')
 
 For lists:
 
