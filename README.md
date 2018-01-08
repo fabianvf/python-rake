@@ -33,7 +33,7 @@ For lists:
     Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
     Rake.run(<text>)
 
-`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLLongStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
+`SmartStopList()`, `FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLLongStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
 
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList())
@@ -44,7 +44,7 @@ Additional flags:
 The RAKE.rake function also accepts minCharacters, maxWords and minFrequency flags to better tune your outputs. minCharacters is the minimum characters allowed in a keyword. maxWords is the maximum number of words allowed in a phrase considered as a keyword. minFrequency is the minimum number of occurances a keyword has to have to be considered as a keyword. An example of this which shows the default values is as follows:
 
     import RAKE
-    Rake = RAKE.Rake(RAKE.SmartStopList())
+    Rake = RAKE.Rake(SmartStopList())
     Rake.run(<text>, minCharacters = 1, maxWords = 5, minFrequency = 1)
 
 Other stoplists and stoplists in other languages can be found at https://github.com/trec-kba/many-stop-words/tree/master/orig, at http://www.ranks.nl/stopwords and in the NLTK stopwords package
