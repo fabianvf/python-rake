@@ -4,14 +4,15 @@ python:
   - '2.7'
   - '3.4'
   - '3.5'
+  - '3.6'
 
 install:
-  - pip install flake8
+  - pip install flake8 pytest
 
 before_script: flake8 .
 
 script:
-  flake8 .
+  pytest test
 
 deploy:
   provider: pypi
