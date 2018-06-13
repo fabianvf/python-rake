@@ -53,7 +53,7 @@ def RanksNLStoplist():
 
 
 def load_stop_words(stop_word_file, regex):
-    with open(stop_word_file,encoding='utf8') as stop_word_file:
+    with open(stop_word_file, encoding='utf8') as stop_word_file:
         stop_words = re.split(regex, stop_word_file.read())
     return [word for word in stop_words if word not in ('', ' ')]  # filters empty string matches
 
