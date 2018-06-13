@@ -2,7 +2,7 @@ python-rake
 ====
 
 #### Note on Upgrades
-Some users have reported issues importing the stoplists in the upgrade to 1.1.\*, if you experience import issues after upgrading try doing a full uninstall + reinstall. 
+Some users have reported issues importing the stoplists in the upgrade to 1.1.\*, if you experience import issues after upgrading try doing a full uninstall + reinstall.
 
 ---
 
@@ -25,7 +25,7 @@ Takes path as string datatype. Words can be on same or different lines but must 
 
 To change how a file is read-in, simply use the code below. The default regex described above is [\W\n]+.
 
-    `RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')`
+    RAKE.Rake(<path_to_your_stopwords_file> , regex = '<your regex>')
 
 For lists:
 
@@ -33,25 +33,25 @@ For lists:
     Rake = RAKE.Rake(<list>); #takes stopwords as list of strings
     Rake.run(<text>)
 
-`RAKE.SmartStopList()`, `RAKE.FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLLongStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite. 
+`SmartStopList()`, `FoxStopList()`, `NLTKStopList()` and `MySQLStopList` return the expected lists as lists, they can be used as shown bellow. `GoogleSearchStopList()` returns what were thought to be stop words in Google search back when large numbers of search suggestions very available. `RanksNLStopList()` and `RanksNLLongStopList()` returns the in-house developed stoplists from Ranks NL, a webmaster suite.
 
     import RAKE
     Rake = RAKE.Rake(RAKE.SmartStopList())
     Rake.run(<text>)
-    
+
 Additional flags:
-    
+
 The RAKE.rake function also accepts minCharacters, maxWords and minFrequency flags to better tune your outputs. minCharacters is the minimum characters allowed in a keyword. maxWords is the maximum number of words allowed in a phrase considered as a keyword. minFrequency is the minimum number of occurances a keyword has to have to be considered as a keyword. An example of this which shows the default values is as follows:
 
     import RAKE
-    Rake = RAKE.Rake(RAKE.SmartStopList())
-    Rake.run(<text>, minCharacters = 1, maxWords = 5, minFrequency = 1)
+    rake = RAKE.Rake(RAKE.SmartStopList())
+    rake.run(<text>, minCharacters = 1, maxWords = 5, minFrequency = 1)
 
 Other stoplists and stoplists in other languages can be found at https://github.com/trec-kba/many-stop-words/tree/master/orig, at http://www.ranks.nl/stopwords and in the NLTK stopwords package
-    
+
 ### Releases ###
 I will push releases to pypi periodically, but if there is a feature in master not built/pushed and you want it to be, just ping me.
- 
+
 ### Credit ###
 This is a maintained fork of the original python RAKE project, which can be found here: https://github.com/aneesha/RAKE
 The Fox Stopwords list was originally created by Christopher Fox, http://dl.acm.org/citation.cfm?id=378888
