@@ -50,7 +50,7 @@ The RAKE.rake function also accepts minCharacters, maxWords and minFrequency fla
 Other stoplists and stoplists in other languages can be found at https://github.com/trec-kba/many-stop-words/tree/master/orig, at http://www.ranks.nl/stopwords, at https://sites.google.com/site/kevinbouge/stopwords-lists and in the NLTK stopwords package
 
 ### Releases ###
-I will push releases to pypi periodically, but if there is a feature in master not built/pushed and you want it to be, just ping me.
+I will push releases to PyPi periodically, but if there is a feature in master not built/pushed and you want it to be, just ping me.
 
 ### Credit ###
 This is a maintained fork of the original python RAKE project, which can be found here: https://github.com/aneesha/RAKE
