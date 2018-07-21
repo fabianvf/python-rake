@@ -64,8 +64,6 @@ def RanksNLStoplist():
 
 
 def load_stop_words(stop_word_file, regex):
-    # Looks like using `io.open()` is needed for compatibility support
-    # https://stackoverflow.com/a/25050323/845248
     with io.open(stop_word_file, encoding='utf8') as stop_word_file:
         stop_words = re.split(regex, stop_word_file.read())
     return [word for word in stop_words if word not in ('', ' ')]  # filters empty string matches
