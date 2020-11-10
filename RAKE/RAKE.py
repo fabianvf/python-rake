@@ -75,7 +75,7 @@ def separate_words(text):
     @param text The text that must be split in to words.
     @param min_word_return_size The minimum no of characters a word must have to be included.
     """
-    splitter = re.compile('(?u)\W+')
+    splitter = re.compile(r'(?u)\W+')
     words = []
     for single_word in splitter.split(text):
         current_word = single_word.strip().lower()
@@ -153,7 +153,7 @@ def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
 
 class Rake(object):
 
-    def __init__(self, stop_words, regex='[\W\n]+'):
+    def __init__(self, stop_words, regex=r'[\W\n]+'):
         #lets users call predefined stopwords easily in a platform agnostic manner or use their own list
         if isinstance(stop_words, list):
             self.__stop_words_pattern = build_stop_word_regex(stop_words)
