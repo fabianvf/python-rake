@@ -6,6 +6,8 @@ Some users have reported issues importing the stoplists in the upgrade to 1.1.\*
 
 ---
 ![Build Status](https://github.com/fabianvf/python-rake/workflows/Python%20package/badge.svg)
+![Upload Python Package](https://github.com/fabianvf/python-rake/workflows/Upload%20Python%20Package/badge.svg)
+[![PyPI version](https://badge.fury.io/py/python-rake.svg)](https://badge.fury.io/py/python-rake)
 
 A Python module implementation of the Rapid Automatic Keyword Extraction (RAKE) algorithm as described in: Rose, S., Engel, D., Cramer, N., & Cowley, W. (2010). Automatic Keyword Extraction from Individual Documents. In M. W. Berry & J. Kogan (Eds.), Text Mining: Theory and Applications: John Wiley & Sons. Initially by @aneesha, packaged by @tomaspinho.
 
