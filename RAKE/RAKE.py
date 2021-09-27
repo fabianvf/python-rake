@@ -8,6 +8,7 @@ from __future__ import absolute_import
 import re
 import operator
 import io
+from collections import defaultdict
 
 __all__ = [
     'Rake',
@@ -140,8 +141,14 @@ def calculate_word_scores(phraseList):
 
 def generate_candidate_keyword_scores(phrase_list, word_score, minFrequency):
     keyword_candidates = {}
+    # iterate over the list once to count how many times
+    # each phrase occurs
+    phrase_counts = defaultdict(int)
+    for p in phrase_list:
+        phrase_counts[p] += 1
+    # and then a second time to compute RAKE scores
     for phrase in phrase_list:
-        if phrase_list.count(phrase) >= minFrequency:
+        if phrase_counts[phrase] >= minFrequency:
             keyword_candidates.setdefault(phrase, 0)
             word_list = separate_words(phrase)
             candidate_score = 0
